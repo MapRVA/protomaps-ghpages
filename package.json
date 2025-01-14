@@ -1,0 +1,39 @@
+{
+  "name": "protomaps-ghpages",
+  "version": "1.0.0",
+  "description": "A simple Github Pages hosted protomaps tiles extract and styles for easy self-hosting of smallish maps.",
+  "main": "build.mjs",
+  "scripts": {
+    "build": "npm run build:tiles && npm run build:styles && npm run build:index",
+    "build:index": "cp index.html dist/index.html",
+    "build:tiles": "node buildTiles.mjs",
+    "build:styles": "node buildStyles.mjs",
+    "build:styles:dev": "TILE_JSON=pmtiles://http://localhost:8080/tiles.pmtiles node buildStyles.mjs",
+    "format": "prettier --write *.mjs index.html README.md",
+    "start": "http-server dist --cors -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maprva/protomaps.git"
+  },
+  "keywords": [
+    "openstreetmap",
+    "osm",
+    "maplibre",
+    "protomaps",
+    "pmtiles"
+  ],
+  "author": "MapRVA",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/maprva/protomaps-ghpages/issues"
+  },
+  "homepage": "https://github.com/maprva/protomaps-ghpages#readme",
+  "dependencies": {
+    "protomaps-themes-base": "^4.3.1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "prettier": "^3.4.2"
+  }
+}

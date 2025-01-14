@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Protomaps Github Pages</title>
+    <link
+      href="https://cdn.skypack.dev/maplibre-gl@5.0.1/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      html,
+      body,
+      #map {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      #map {
+        height: 60%;
+        width: 60%;
+      }
+    </style>
+  </head>
+  <body>
+    <div>Style URL: <span id="style-url"></span></div>
+
+    <div id="map"></div>
+
+    <script type="module">
+      import maplibregl from "https://cdn.skypack.dev/maplibre-gl@5.0.1";
+      import { Protocol } from "https://cdn.skypack.dev/pmtiles@4.2.1";
+
+      const protocol = new Protocol();
+      maplibregl.addProtocol("pmtiles", protocol.tile);
+
+      document.getElementById("style-url").textContent = new URL(
+        "./styles/light/en.json",
+        window.location.href,
+      );
+
+      var map = new maplibregl.Map({
+        container: "map",
+        style: "./styles/light/en.json",
+        hash: true,
+        attributionControl: {},
+      });
+    </script>
+  </body>
+</html>
