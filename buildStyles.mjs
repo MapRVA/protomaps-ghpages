@@ -10,7 +10,7 @@ if (process.env.TILE_JSON) {
   tileJson = process.env.TILE_JSON;
 } else if (process.env.GITHUB_REPOSITORY) {
   const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/", 2);
-  tileJson = `pmtiles://https://${owner}.github.io/${repo}/protomaps.pmtiles`;
+  tileJson = `pmtiles://https://${owner}.github.io/${repo}/tiles.pmtiles`;
 } else {
   throw new Exception("No TILE_JSON or GITHUB_REPOSITORY env var set");
 }
