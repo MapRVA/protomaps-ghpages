@@ -1,7 +1,7 @@
 // derived from from https://github.com/protomaps/basemaps/blob/main/styles/src/generate_styles.ts
 import fs from "fs";
 import { writeFile } from "fs/promises";
-import i from "protomaps-themes-base";
+import protomapsLayers from "protomaps-themes-base";
 import { language_script_pairs } from "protomaps-themes-base";
 import { viewport } from "@mapbox/geo-viewport";
 import { bbox } from "@turf/bbox";
@@ -21,7 +21,7 @@ if (process.env.TILE_JSON) {
 
 for (const theme of ["light", "dark", "white", "grayscale", "black"]) {
   for (const { lang, full_name, script } of language_script_pairs) {
-    const layers = i("protomaps", theme, lang, script);
+    const layers = protomapsLayers("protomaps", theme, lang, script);
 
     const style = {
       version: 8,
