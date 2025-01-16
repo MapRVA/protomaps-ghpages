@@ -3,6 +3,10 @@ import fs from "fs";
 import { writeFile } from "fs/promises";
 import i from "protomaps-themes-base";
 import { language_script_pairs } from "protomaps-themes-base";
+import { viewport } from "@mapbox/geo-viewport";
+import { bbox } from "@turf/bbox";
+
+const region = JSON.parse(fs.readFileSync("region.geojson"));
 
 // Determine tile URL
 let tileJson;
@@ -33,6 +37,7 @@ for (const theme of ["light", "dark", "white", "grayscale", "black"]) {
       sprite: `https://protomaps.github.io/basemaps-assets/sprites/v4/${theme}`,
       glyphs:
         "https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf",
+      ...viewport(bbox(region), [600, 600]),
     };
 
     const directory = `dist/styles/${theme}`;
