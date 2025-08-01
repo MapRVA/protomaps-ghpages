@@ -1,5 +1,8 @@
 # Protomaps Github Pages
 
+> [!CAUTION]
+> Due to a regression in Github Pages, the output of this repo does not work on firefox. See here for more info: https://github.com/bdon/ghpages-firefox-range-bug
+
 This repo contains scripts and Github Actions configuration to create a Protomaps extract for the
 area defined in `region.geojson` and styles to go along with it.
 
